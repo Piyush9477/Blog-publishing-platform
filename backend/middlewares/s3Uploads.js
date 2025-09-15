@@ -19,7 +19,7 @@ const upload = multer({
         s3: s3,
         bucket: awsBucketName,
         metadata: function (req, file, cb) {
-            cb(null, {fieldName: file.fieldname});
+            cb(null, { fieldName: file.fieldname });
         },
         key: function (req, file, cb) {
             const fileName = Date.now().toString() + "-" + file.originalname;
@@ -28,4 +28,4 @@ const upload = multer({
     }),
 });
 
-module.exports = {upload, s3, awsBucketName};
+module.exports = { upload, s3, awsBucketName };

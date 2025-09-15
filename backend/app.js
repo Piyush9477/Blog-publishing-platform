@@ -5,13 +5,13 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 dotenv.config();
 const connectMongoDb = require("./init/mongodb");
+const authRoutes = require("./routes/authRoutes");
 
 //init app
 const app = express();
 
 //Database connection
 connectMongoDb();
-
 
 //Middlewares
 app.use(express.json());
@@ -22,5 +22,8 @@ app.use(cors({
   origin: 'http://localhost:5173',
   credentials: true, 
 }));
+
+//Routes
+app.use("/api/auth", authRoutes);
 
 module.exports = app;
