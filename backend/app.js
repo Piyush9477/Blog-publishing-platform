@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 const connectMongoDb = require("./init/mongodb");
 const authRoutes = require("./routes/authRoutes");
+const postRoutes = require("./routes/postRoutes");
 
 //init app
 const app = express();
@@ -25,5 +26,6 @@ app.use(cors({
 
 //Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/post", postRoutes);
 
 module.exports = app;
